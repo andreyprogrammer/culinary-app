@@ -1,10 +1,11 @@
-package androidlevel2.andreymerkurev.culinaryapp;
-
-import androidx.appcompat.app.AppCompatActivity;
+package androidlevel2.andreymerkurev.culinaryapp.view;
 
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import androidlevel2.andreymerkurev.culinaryapp.R;
+import moxy.MvpAppCompatActivity;
+
+public class MainActivity extends MvpAppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
