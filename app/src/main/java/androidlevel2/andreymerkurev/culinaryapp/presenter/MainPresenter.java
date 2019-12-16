@@ -2,9 +2,10 @@ package androidlevel2.andreymerkurev.culinaryapp.presenter;
 
 import android.util.Log;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
-import androidlevel2.andreymerkurev.culinaryapp.model.entity.Recipes;
 import androidlevel2.andreymerkurev.culinaryapp.model.entity.Recipe;
 import androidlevel2.andreymerkurev.culinaryapp.model.retrofit.ApiHelper;
 import androidlevel2.andreymerkurev.culinaryapp.view.MainView;
@@ -22,17 +23,15 @@ public class MainPresenter extends MvpPresenter<MainView> {
     ApiHelper apiHelper;
 
     public void getAllRecipesFromInternet() {
-        Observable<Recipes> single = apiHelper.requestServer();
-        Disposable disposable = single.observeOn(AndroidSchedulers.mainThread()).subscribe(photos -> {
-            //Log.d(TAG, "onNext: " + photos.totalHits);
+        Observable<List<Recipe>> single = apiHelper.requestServer();
+        Disposable disposable = single.observeOn(AndroidSchedulers.mainThread()).subscribe(recipeList -> {
 
-            for (Recipe recipe : photos.recipe) {
-                Log.d(TAG, "onNext " + recipe);
-//                putData(hit.webformatURL);
+            for (Recipe recipe : recipeList) {
+                Log.d(TAG, "onNext: " + recipe.image);
             }
 
         }, throwable -> {
-            Log.e(TAG, "onError " + throwable);
+            Log.e(TAG, "onError: " + throwable);
         });
     }
 }

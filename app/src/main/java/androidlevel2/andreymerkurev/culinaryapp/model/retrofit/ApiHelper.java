@@ -3,7 +3,9 @@ package androidlevel2.andreymerkurev.culinaryapp.model.retrofit;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import androidlevel2.andreymerkurev.culinaryapp.model.entity.Recipes;
+import java.util.List;
+
+import androidlevel2.andreymerkurev.culinaryapp.model.entity.Recipe;
 import io.reactivex.Observable;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
@@ -11,7 +13,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiHelper {
-    public Observable<Recipes> requestServer() {
+        public Observable<List<Recipe>> requestServer() {
         final String FORMAT = "json";
         Gson gson = new GsonBuilder()
                 .excludeFieldsWithoutExposeAnnotation()
