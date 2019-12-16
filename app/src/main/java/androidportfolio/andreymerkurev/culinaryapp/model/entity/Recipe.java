@@ -1,4 +1,4 @@
-package androidlevel2.andreymerkurev.culinaryapp.model.entity;
+package androidportfolio.andreymerkurev.culinaryapp.model.entity;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

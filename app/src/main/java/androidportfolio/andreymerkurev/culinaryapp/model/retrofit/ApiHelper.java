@@ -1,11 +1,11 @@
-package androidlevel2.andreymerkurev.culinaryapp.model.retrofit;
+package androidportfolio.andreymerkurev.culinaryapp.model.retrofit;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.util.List;
 
-import androidlevel2.andreymerkurev.culinaryapp.model.entity.Recipe;
+import androidportfolio.andreymerkurev.culinaryapp.model.entity.Recipe;
 import io.reactivex.Observable;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;

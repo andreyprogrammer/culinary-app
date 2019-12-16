@@ -1,4 +1,4 @@
-package androidlevel2.andreymerkurev.culinaryapp;
+package androidportfolio.andreymerkurev.culinaryapp;
 
 import org.junit.Test;
 
