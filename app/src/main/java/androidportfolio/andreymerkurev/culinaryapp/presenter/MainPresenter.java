@@ -32,19 +32,14 @@ public class MainPresenter extends MvpPresenter<MainView> {
     }
 
     public void getAllRecipesFromInternet() {
-        Log.d(TAG, "point 2");
         Observable<List<Recipe>> single = apiHelper.requestServer();
-        Log.d(TAG, "point 3");
         Disposable disposable = single.observeOn(AndroidSchedulers.mainThread()).subscribe(requestList -> {
-            Log.d(TAG, "point 4");
             recipeList = requestList;
             for (Recipe recipe : requestList) {
                 Log.d(TAG, "onNext: " + recipe.image);
             }
-            Log.d(TAG, "point 5");
             getViewState().updateRecyclerView();
             //getViewState().setImage(recipeList);
-            Log.d(TAG, "point 6");
         }, throwable -> {
             Log.e(TAG, "onError15: " + throwable);
         });

@@ -45,8 +45,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public int getItemCount() {
-        Log.d(TAG, "getItemCount1");
-        return iRecyclerMainPresenter.getItemCount(); //TODO error
+        return iRecyclerMainPresenter.getItemCount();
     }
 
     class InnerViewHolder extends RecyclerView.ViewHolder implements IViewHolder {
