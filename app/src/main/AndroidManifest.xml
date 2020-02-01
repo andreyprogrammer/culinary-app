@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
     xmlns:tools="http://schemas.android.com/tools"
-    package="androidlevel2.andreymerkurev.culinaryapp">
+    package="androidportfolio.andreymerkurev.culinaryapp">
 
     <dist:module dist:instant="true" />
 
@@ -14,12 +14,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".app.App"
+        android:name="androidportfolio.andreymerkurev.culinaryapp.app.App"
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning"
-        tools:targetApi="m">
-        <activity android:name=".view.MainActivity">
+
+        >
+        <activity android:name="androidportfolio.andreymerkurev.culinaryapp.view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
