@@ -20,22 +20,33 @@ import moxy.MvpPresenter;
 
 @InjectViewState
 public class MainPresenter extends MvpPresenter<MainView> {
-    private String TAG = "MainActivity";
+    private String TAG = "app_log - MainPresenter ";
     private RecyclerMainPresenter recyclerMainPresenter;
+    private List<Recipe> recipeList;
 
     @Inject
     ApiHelper apiHelper;
 
-    public void getAllRecipesFromInternet() {
-        Observable<List<Recipe>> single = apiHelper.requestServer();
-        Disposable disposable = single.observeOn(AndroidSchedulers.mainThread()).subscribe(recipeList -> {
+    public MainPresenter() {
+        recyclerMainPresenter = new RecyclerMainPresenter();
+    }
 
-            for (Recipe recipe : recipeList) {
+    public void getAllRecipesFromInternet() {
+        Log.d(TAG, "point 2");
+        Observable<List<Recipe>> single = apiHelper.requestServer();
+        Log.d(TAG, "point 3");
+        Disposable disposable = single.observeOn(AndroidSchedulers.mainThread()).subscribe(requestList -> {
+            Log.d(TAG, "point 4");
+            recipeList = requestList;
+            for (Recipe recipe : requestList) {
                 Log.d(TAG, "onNext: " + recipe.image);
             }
-
+            Log.d(TAG, "point 5");
+            getViewState().updateRecyclerView();
+            //getViewState().setImage(recipeList);
+            Log.d(TAG, "point 6");
         }, throwable -> {
-            Log.e(TAG, "onError: " + throwable);
+            Log.e(TAG, "onError15: " + throwable);
         });
     }
 
@@ -43,21 +54,22 @@ public class MainPresenter extends MvpPresenter<MainView> {
 
         @Override
         public void bindView(IViewHolder holder) {
-            holder.setImage(hitList.get(holder.getPos()).webformatURL); //TODO
+            holder.setImage(recipeList.get(holder.getPos()).image);
         }
 
         @Override
         public int getItemCount() {
-            if (hitList != null) {
-                return hitList.size();
+            Log.d(TAG, "point getItemCount2");
+            if (recipeList != null) {
+                return recipeList.size();
             }
             return 0;
         }
 
-        @Override
-        public void onClick(View v, int position) {
-            getViewState().onClick(v, position, hitList);
-        }
+//        @Override
+//        public void onClick(View v, int position) {
+//            getViewState().onClick(v, position, hitList);
+//        }
 
     }
 

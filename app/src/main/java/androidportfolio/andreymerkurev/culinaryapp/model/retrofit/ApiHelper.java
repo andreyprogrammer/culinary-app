@@ -22,7 +22,7 @@ public class ApiHelper {
         GsonConverterFactory gsonConverterFactory = GsonConverterFactory.create(gson);
 
         IApiService api = new Retrofit.Builder()
-                .baseUrl("https://185.189.13.46.xip.io")
+                .baseUrl("https://borsh.185.195.24.222.xip.io")
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(gsonConverterFactory)
                 .build()

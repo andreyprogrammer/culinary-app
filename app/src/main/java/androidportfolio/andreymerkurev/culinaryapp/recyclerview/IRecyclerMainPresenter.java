@@ -5,5 +5,5 @@ import android.view.View;
 public interface IRecyclerMainPresenter {
     void bindView(IViewHolder iViewHolder);
     int getItemCount();
-    void onClick(View v, int position);
+    //void onClick(View v, int position);
 }

@@ -11,6 +11,7 @@ import java.util.List;
 
 import androidportfolio.andreymerkurev.culinaryapp.R;
 import androidportfolio.andreymerkurev.culinaryapp.app.App;
+import androidportfolio.andreymerkurev.culinaryapp.model.entity.Recipe;
 import androidportfolio.andreymerkurev.culinaryapp.presenter.MainPresenter;
 import androidportfolio.andreymerkurev.culinaryapp.recyclerview.RecyclerViewAdapter;
 import moxy.MvpAppCompatActivity;
@@ -18,9 +19,8 @@ import moxy.presenter.InjectPresenter;
 import moxy.presenter.ProvidePresenter;
 
 public class MainActivity extends MvpAppCompatActivity implements View.OnClickListener, MainView {
-    //    private TextView textView;
-    private static final String TAG = "app_log - MainActivity";
-    private final int SPANCOUNT = 2;
+    private static final String TAG = "app_log - MainActivity ";
+    private final int SPANCOUNT = 1;
     private RecyclerViewAdapter adapter;
 
     @InjectPresenter
@@ -36,8 +36,8 @@ public class MainActivity extends MvpAppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         App.getAppComponent().inject(mainPresenter);
-//        textView = findViewById(R.id.tv);
-
+        initRecyclerView();
+        Log.d(TAG, "start");
         mainPresenter.getAllRecipesFromInternet();
     }
 
@@ -67,8 +67,8 @@ public class MainActivity extends MvpAppCompatActivity implements View.OnClickLi
         adapter.notifyDataSetChanged();
     }
 
-    @Override
-    public void setImage(List<Hit> hitList) {
-        Log.d(TAG, "setImage: " + hitList);
-    } //TODO
+//    @Override
+//    public void setImage(List<Recipe> recipeList) {
+//        Log.d(TAG, "setImage: " + recipeList);
+//    }
 }

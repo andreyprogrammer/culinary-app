@@ -1,5 +1,6 @@
 package androidportfolio.andreymerkurev.culinaryapp.recyclerview;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import androidportfolio.andreymerkurev.culinaryapp.app.App;
 import androidportfolio.andreymerkurev.culinaryapp.model.PicassoLoader;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.InnerViewHolder>{
+    private String TAG = "app_log - RecyclerViewAdapter ";
     private IRecyclerMainPresenter iRecyclerMainPresenter;
     private View.OnClickListener clickListener;
 
@@ -43,7 +45,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public int getItemCount() {
-        return iRecyclerMainPresenter.getItemCount();
+        Log.d(TAG, "getItemCount1");
+        return iRecyclerMainPresenter.getItemCount(); //TODO error
     }
 
     class InnerViewHolder extends RecyclerView.ViewHolder implements IViewHolder {
@@ -56,7 +59,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
             if (itemClickListener != null) {
                 imageView.setOnClickListener(view1 -> {
-                    iRecyclerMainPresenter.onClick(view1, position);
+                    //iRecyclerMainPresenter.onClick(view1, position);
                 });
             }
         }

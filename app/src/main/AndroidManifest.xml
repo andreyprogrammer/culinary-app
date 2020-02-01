@@ -17,8 +17,8 @@
         android:name="androidportfolio.andreymerkurev.culinaryapp.app.App"
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning"
-        tools:targetApi="m">
+
+        >
         <activity android:name="androidportfolio.andreymerkurev.culinaryapp.view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
