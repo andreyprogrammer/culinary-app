@@ -1,10 +1,11 @@
-package androidlevel2.andreymerkurev.culinaryapp.app;
+package androidportfolio.andreymerkurev.culinaryapp.app;
 
 import android.app.Application;
 
 import javax.inject.Singleton;
 
-import androidlevel2.andreymerkurev.culinaryapp.model.retrofit.ApiHelper;
+import androidportfolio.andreymerkurev.culinaryapp.model.PicassoLoader;
+import androidportfolio.andreymerkurev.culinaryapp.model.retrofit.ApiHelper;
 import dagger.Module;
 import dagger.Provides;
 
@@ -22,11 +23,11 @@ public class AppModule {
         return new ApiHelper();
     }
 
-//    @Singleton
-//    @Provides
-//    PicassoLoader providePicassoLoader() {
-//        return new PicassoLoader();
-//    }
+    @Singleton
+    @Provides
+    PicassoLoader providePicassoLoader() {
+        return new PicassoLoader();
+    }
 
 //    @Singleton
 //    @Provides

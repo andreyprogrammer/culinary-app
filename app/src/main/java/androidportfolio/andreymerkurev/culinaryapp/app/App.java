@@ -1,4 +1,4 @@
-package androidlevel2.andreymerkurev.culinaryapp.app;
+package androidportfolio.andreymerkurev.culinaryapp.app;
 
 import android.app.Application;
 

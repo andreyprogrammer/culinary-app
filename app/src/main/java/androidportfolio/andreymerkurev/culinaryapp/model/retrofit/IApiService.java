@@ -1,8 +1,8 @@
-package androidlevel2.andreymerkurev.culinaryapp.model.retrofit;
+package androidportfolio.andreymerkurev.culinaryapp.model.retrofit;
 
 import java.util.List;
 
-import androidlevel2.andreymerkurev.culinaryapp.model.entity.Recipe;
+import androidportfolio.andreymerkurev.culinaryapp.model.entity.Recipe;
 import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
