@@ -1,5 +1,9 @@
 package androidportfolio.andreymerkurev.culinaryapp.view;
 
+import android.app.Activity;
+import android.app.Application;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -63,9 +67,11 @@ public class MainActivity extends MvpAppCompatActivity implements View.OnClickLi
         switch (item.getItemId()) {
             case R.id.menu_about:
                 //addElement();
+                aboutProject();
                 return true;
             case R.id.menu_contacts:
                 //clearList();
+                contacts();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -96,6 +102,12 @@ public class MainActivity extends MvpAppCompatActivity implements View.OnClickLi
 //    }
 
     public void aboutProject() {
+        Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
+        startActivity(intent);
+    }
 
+    public void contacts() {
+        Intent intent = new Intent(getApplicationContext(), ContactsActivity.class);
+        startActivity(intent);
     }
 }

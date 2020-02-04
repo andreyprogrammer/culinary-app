@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
-    xmlns:tools="http://schemas.android.com/tools"
     package="androidportfolio.andreymerkurev.culinaryapp">
 
     <dist:module dist:instant="true" />
@@ -26,6 +25,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".view.AboutActivity" />
+        <activity android:name=".view.ContactsActivity" />
     </application>
 
 </manifest>
