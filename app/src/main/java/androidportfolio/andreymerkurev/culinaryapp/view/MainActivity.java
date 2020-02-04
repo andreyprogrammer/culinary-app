@@ -2,8 +2,11 @@ package androidportfolio.andreymerkurev.culinaryapp.view;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -50,6 +53,26 @@ public class MainActivity extends MvpAppCompatActivity implements View.OnClickLi
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_about:
+                //addElement();
+                return true;
+            case R.id.menu_contacts:
+                //clearList();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
     public void onClick(View view) {
         return;
     }
@@ -71,4 +94,8 @@ public class MainActivity extends MvpAppCompatActivity implements View.OnClickLi
 //    public void setImage(List<Recipe> recipeList) {
 //        Log.d(TAG, "setImage: " + recipeList);
 //    }
+
+    public void aboutProject() {
+
+    }
 }

@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Сulinary App</string>
-    <string name="tv_text">Hello World!</string>
+    <string name="menu_about">О проекте</string>
+    <string name="menu_contacts">Контакты</string>
 </resources>
