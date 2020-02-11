@@ -1,13 +1,12 @@
 package androidportfolio.andreymerkurev.culinaryapp.recyclerview;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import javax.inject.Inject;
@@ -17,24 +16,21 @@ import androidportfolio.andreymerkurev.culinaryapp.app.App;
 import androidportfolio.andreymerkurev.culinaryapp.model.PicassoLoader;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.InnerViewHolder>{
-    private String TAG = "app_log - RecyclerViewAdapter ";
     private IRecyclerMainPresenter iRecyclerMainPresenter;
-    private View.OnClickListener clickListener;
 
     @Inject
     PicassoLoader picassoLoader;
 
-    public RecyclerViewAdapter(IRecyclerMainPresenter iRecyclerMainPresenter, View.OnClickListener clickListener) {
+    public RecyclerViewAdapter(IRecyclerMainPresenter iRecyclerMainPresenter) {
         App.getAppComponent().inject(this);
         this.iRecyclerMainPresenter = iRecyclerMainPresenter;
-        this.clickListener = clickListener;
     }
 
     @NonNull
     @Override
     public InnerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recyclerview, parent, false);
-        return new InnerViewHolder(view, clickListener);
+        return new InnerViewHolder(view);
     }
 
     @Override
@@ -49,18 +45,26 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     class InnerViewHolder extends RecyclerView.ViewHolder implements IViewHolder {
-        private ImageView imageView;
         private int position = 0;
+        private ImageView imageView;
+        private TextView tvTitle;
+        private TextView tvDescription;
+        private ImageView ivDuration;
+        private ImageView ivLevel;
 
-        public InnerViewHolder(@NonNull View itemView, @Nullable View.OnClickListener itemClickListener) {
+        public InnerViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.iv);
+            tvTitle = itemView.findViewById(R.id.tv_title);
+            tvDescription = itemView.findViewById(R.id.tv_description);
+            ivDuration = itemView.findViewById(R.id.iv_duration);
+            ivLevel = itemView.findViewById(R.id.iv_level);
+            ivDuration.setImageResource(R.drawable.smile);
+        }
 
-            if (itemClickListener != null) {
-                imageView.setOnClickListener(view1 -> {
-                    //iRecyclerMainPresenter.onClick(view1, position);
-                });
-            }
+        @Override
+        public int getPos() {
+            return position;
         }
 
         @Override
@@ -69,8 +73,30 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
 
         @Override
-        public int getPos() {
-            return position;
+        public void setTitle(String title) {
+            tvTitle.setText(title);
+        }
+
+        @Override
+        public void setDescription(String description) {
+            tvDescription.setText(description);
+        }
+
+        @Override
+        public void setDuration(int duration) {
+            if (duration >= 0 && duration <= 20) ivDuration.setImageResource(R.drawable.duration_15);
+                else if (duration > 20 && duration <= 30) ivDuration.setImageResource(R.drawable.duration_30);
+                    else if (duration > 30) ivDuration.setImageResource(R.drawable.duration_60);
+        }
+
+        @Override
+        public void setLevel(int level) {
+            switch(level) {
+                case 1: ivLevel.setImageResource(R.drawable.child); break;
+                case 2: ivLevel.setImageResource(R.drawable.adult); break;
+                case 3: ivLevel.setImageResource(R.drawable.chief); break;
+                default: ivLevel.setImageResource(R.drawable.smile); break;
+            }
         }
     }
 }

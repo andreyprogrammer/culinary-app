@@ -28,10 +28,4 @@ public class AppModule {
     PicassoLoader providePicassoLoader() {
         return new PicassoLoader();
     }
-
-//    @Singleton
-//    @Provides
-//    AppDatabase provideAppDatabase() {
-//        return App.getAppDatabase();
-//    }
 }

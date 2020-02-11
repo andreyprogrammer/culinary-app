@@ -1,32 +1,23 @@
 package androidportfolio.andreymerkurev.culinaryapp.view;
 
-import android.app.Activity;
-import android.app.Application;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
-
 import androidportfolio.andreymerkurev.culinaryapp.R;
 import androidportfolio.andreymerkurev.culinaryapp.app.App;
-import androidportfolio.andreymerkurev.culinaryapp.model.entity.Recipe;
 import androidportfolio.andreymerkurev.culinaryapp.presenter.MainPresenter;
 import androidportfolio.andreymerkurev.culinaryapp.recyclerview.RecyclerViewAdapter;
 import moxy.MvpAppCompatActivity;
 import moxy.presenter.InjectPresenter;
 import moxy.presenter.ProvidePresenter;
 
-public class MainActivity extends MvpAppCompatActivity implements View.OnClickListener, MainView {
-    private static final String TAG = "app_log - MainActivity ";
+public class MainActivity extends MvpAppCompatActivity implements MainView {
     private final int SPANCOUNT = 1;
     private RecyclerViewAdapter adapter;
 
@@ -44,7 +35,6 @@ public class MainActivity extends MvpAppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_main);
         App.getAppComponent().inject(mainPresenter);
         initRecyclerView();
-        Log.d(TAG, "start");
         mainPresenter.getAllRecipesFromInternet();
     }
 
@@ -52,7 +42,7 @@ public class MainActivity extends MvpAppCompatActivity implements View.OnClickLi
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         GridLayoutManager layoutManager = new GridLayoutManager(this, SPANCOUNT);
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new RecyclerViewAdapter(mainPresenter.getRecyclerMainPresenter(), this);
+        adapter = new RecyclerViewAdapter(mainPresenter.getRecyclerMainPresenter());
         recyclerView.setAdapter(adapter);
     }
 
@@ -66,11 +56,9 @@ public class MainActivity extends MvpAppCompatActivity implements View.OnClickLi
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_about:
-                //addElement();
                 aboutProject();
                 return true;
             case R.id.menu_contacts:
-                //clearList();
                 contacts();
                 return true;
             default:
@@ -79,27 +67,9 @@ public class MainActivity extends MvpAppCompatActivity implements View.OnClickLi
     }
 
     @Override
-    public void onClick(View view) {
-        return;
-    }
-
-//    @Override
-//    public void onClick(View v, int position, List<Hit> hitList) {
-//        Intent intent = new Intent(v.getContext(), DetailActivity.class);
-//        intent.putExtra("POSITION", hitList.get(position).webformatURL);
-//        startActivity(intent);
-//    }
-
-    @Override
     public void updateRecyclerView() {
-        Log.d(TAG, "updateRecyclerView: ");
         adapter.notifyDataSetChanged();
     }
-
-//    @Override
-//    public void setImage(List<Recipe> recipeList) {
-//        Log.d(TAG, "setImage: " + recipeList);
-//    }
 
     public void aboutProject() {
         Intent intent = new Intent(getApplicationContext(), AboutActivity.class);

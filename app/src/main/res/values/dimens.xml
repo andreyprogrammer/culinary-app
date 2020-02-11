@@ -1,4 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="item_margin">16dp</dimen>
+    <dimen name="item_margin">8dp</dimen>
+    <dimen name="card_corner_radius">8dp</dimen>
+    <dimen name="card_elevation">2dp</dimen>
+    <dimen name="card_content_padding">4dp</dimen>
+    <dimen name="card_tv_description_text_size">12sp</dimen>
+    <dimen name="card_tv_title_text_size">26sp</dimen>
+    <dimen name="card_iv_width">150dp</dimen>
+    <dimen name="card_iv_height">120dp</dimen>
+    <dimen name="card_tv_title_margin_start">16dp</dimen>
+    <dimen name="card_tv_title_margin_top">4dp</dimen>
+    <dimen name="card_tv_description_margin_start">16dp</dimen>
+    <dimen name="ivs_margin_end">4dp</dimen>
+    <dimen name="iv_duration_margin_top">4dp</dimen>
+    <dimen name="iv_level_margin_top">4dp</dimen>
+    <dimen name="iv_duration_padding">8dp</dimen>
+    <dimen name="iv_level_padding">8dp</dimen>
+    <dimen name="card_relative_layout_padding">4dp</dimen>
+    <dimen name="card_tv_description_margin_end">8dp</dimen>
+    <dimen name="small_img_size">50dp</dimen>
 </resources>

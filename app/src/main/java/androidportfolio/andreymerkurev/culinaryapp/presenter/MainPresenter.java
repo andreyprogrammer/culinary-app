@@ -1,7 +1,6 @@
 package androidportfolio.andreymerkurev.culinaryapp.presenter;
 
 import android.util.Log;
-import android.view.View;
 
 import java.util.List;
 
@@ -35,11 +34,7 @@ public class MainPresenter extends MvpPresenter<MainView> {
         Observable<List<Recipe>> single = apiHelper.requestServer();
         Disposable disposable = single.observeOn(AndroidSchedulers.mainThread()).subscribe(requestList -> {
             recipeList = requestList;
-            for (Recipe recipe : requestList) {
-                Log.d(TAG, "onNext: " + recipe.image);
-            }
             getViewState().updateRecyclerView();
-            //getViewState().setImage(recipeList);
         }, throwable -> {
             Log.e(TAG, "onError15: " + throwable);
         });
@@ -50,22 +45,19 @@ public class MainPresenter extends MvpPresenter<MainView> {
         @Override
         public void bindView(IViewHolder holder) {
             holder.setImage(recipeList.get(holder.getPos()).image);
+            holder.setTitle(recipeList.get(holder.getPos()).name);
+            holder.setDescription(recipeList.get(holder.getPos()).description);
+            holder.setDuration(recipeList.get(holder.getPos()).duration);
+            holder.setLevel(recipeList.get(holder.getPos()).level);
         }
 
         @Override
         public int getItemCount() {
-            Log.d(TAG, "point getItemCount2");
             if (recipeList != null) {
                 return recipeList.size();
             }
             return 0;
         }
-
-//        @Override
-//        public void onClick(View v, int position) {
-//            getViewState().onClick(v, position, hitList);
-//        }
-
     }
 
     public RecyclerMainPresenter getRecyclerMainPresenter() {

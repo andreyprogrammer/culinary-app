@@ -9,8 +9,6 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         appComponent = generateAppComponent();
-//        appDatabase = Room.databaseBuilder(getApplicationContext(),
-//                AppDatabase.class, "room_database").build();
     }
 
     public static AppComponent getAppComponent() {
