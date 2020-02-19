@@ -28,4 +28,6 @@ public class AppModule {
     PicassoLoader providePicassoLoader() {
         return new PicassoLoader();
     }
+
+
 }
